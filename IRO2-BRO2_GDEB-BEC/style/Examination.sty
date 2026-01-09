@@ -6,6 +6,7 @@
 \RequirePackage{etoolbox}
 
 % Generic exam metadata hooks
+
 \providecommand{\pdfTitle}{Formelsammlung Grundlagen Elektronik / Bauelemente}
 \providecommand{\pdfTitleEN}{Formulary Basics of electronics and components}
 \providecommand{\pdfAuthor}{Prof. Dr. Henning Lorrmann}
@@ -26,12 +27,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{iftex}
 \ifPDFTeX
-  \RequirePackage[utf8]{inputenc}
-  \RequirePackage[T1]{fontenc}
-  \RequirePackage{lmodern}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
 \else
-  \RequirePackage{fontspec}
-  \defaultfontfeatures{Ligatures=TeX}
+\RequirePackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,18 +72,18 @@
 
 % Unified siunitx setup (language-conditional)
 \sisetup{
-  group-separator = {\,},
-  group-minimum-digits = 4,
-  output-complex-root = \mathrm{j},
-  complex-root-position = before-number,
-  exponent-product = \cdot,
-  per-mode = fraction
+group-separator = {\,},
+group-minimum-digits = 4,
+output-complex-root = \mathrm{j},
+complex-root-position = before-number,
+exponent-product = \cdot,
+per-mode = fraction
 }
 
 \ifdefstring{\ExamLanguage}{ngerman}{%
-  \sisetup{locale = DE, output-decimal-marker = {,}}%
+\sisetup{locale = DE, output-decimal-marker = {,}}%
 }{%
-  \sisetup{locale = US, output-decimal-marker = {.}}%
+\sisetup{locale = US, output-decimal-marker = {.}, exponent-product = \cdot,}%
 }
 
 % Custom SI units (merged from both files)
@@ -145,17 +146,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage[breakable]{tcolorbox}
 \newcommand{\mybox}[2]{%
-  \begin{tcolorbox}[%
-      breakable,
-      colback=thws-grey-20!0,
-      colframe=thws-grey-20,
-      boxsep=1pt,
-      arc=0pt,
-      outer arc=0pt,
-      title={\textcolor{black}{#1}}
-    ]%
-    \textcolor{black}{#2}
-  \end{tcolorbox}
+\begin{tcolorbox}[%
+breakable,
+colback=thws-grey-20!0,
+colframe=thws-grey-20,
+boxsep=1pt,
+arc=0pt,
+outer arc=0pt,
+title={\textcolor{black}{#1}}
+]%
+\textcolor{black}{#2}
+\end{tcolorbox}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,14 +173,14 @@
 
 % Compact display math spacing (FROM FILE 2)
 \expandafter\def\expandafter\normalsize\expandafter{%
-  \normalsize%
-  \setlength\abovedisplayskip{0pt}%
-  \setlength\belowdisplayskip{0pt}%
-  \setlength\abovedisplayshortskip{-8pt}%
-  \setlength\belowdisplayshortskip{0pt}%
+\normalsize%
+\setlength\abovedisplayskip{0pt}%
+\setlength\belowdisplayskip{0pt}%
+\setlength\abovedisplayshortskip{-9pt}%
+\setlength\belowdisplayshortskip{0pt}%
 }
 
-\renewcommand{\baselinestretch}{0.2}
+\renewcommand{\baselinestretch}{0.1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ordinal numbers (FROM FILE 1)
@@ -224,15 +225,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{hyperref}
 \hypersetup{
-  unicode=true,
-  pdftitle={\pdfTitle / \pdfTitleEN},
-  pdfauthor={\pdfAuthor},
-  pdfkeywords={\pdfKeywords},
-  pdfproducer={},
-  pdfcreator={},
-  colorlinks=true,
-  urlcolor=thws-blue,
-  linkcolor=black
+unicode=true,
+pdftitle={\pdfTitle / \pdfTitleEN},
+pdfauthor={\pdfAuthor},
+pdfkeywords={\pdfKeywords},
+pdfproducer={},
+pdfcreator={},
+colorlinks=true,
+urlcolor=thws-blue,
+linkcolor=black
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,7 +241,7 @@
 % ✅ COMPLETE IMPLEMENTATION WITH TITLE/HEADER/FOOTER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{geometry}
-\geometry{top=1in, headheight=0.5in, headsep=0.1in, margin=0.5in}
+\geometry{top=1.5cm, bottom=1.5cm, left=0.5cm, right=0.5cm}
 
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
@@ -273,8 +274,8 @@
 % Underline with proper spacing (FROM FILE 1)
 \RequirePackage{stackengine}
 \def\buline#1{\def\stacktype{L}\def\stackalignment{l}%
-  \ThisStyle{\stackon[0pt]{$\SavedStyle#1$}{\let\mathit\relax%
-      $\SavedStyle\underline{\phantom{\mathrm{#1}}}$}}}
+\ThisStyle{\stackon[0pt]{$\SavedStyle#1$}{\let\mathit\relax%
+$\SavedStyle\underline{\phantom{\mathrm{#1}}}$}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description environment tweak (FROM FILE 2)
@@ -282,7 +283,7 @@
 \RequirePackage{enumerate}
 \renewenvironment{description}[1][0pt]
 {\list{}{\labelwidth=0pt \leftmargin=#1
-    \let\makelabel\descriptionlabel}}
+\let\makelabel\descriptionlabel}}
 {\endlist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

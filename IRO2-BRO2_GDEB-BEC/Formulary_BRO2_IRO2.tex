@@ -1,11 +1,11 @@
-\documentclass[a4paper,7pt]{extarticle} % 10pt - 30% = 7pt
+\documentclass[a4paper]{extarticle} 
 
 % Include necessary packages
 \usepackage{style/Examination}
 
 % Start the document
 \begin{document}
-\fontsize{7pt}{8pt}\selectfont
+\fontsize{6.5pt}{7.5pt}\selectfont
 
 \begin{multicols}{2}
  
@@ -76,6 +76,7 @@
                   \[\pdv{f}{s}=\frac{\vec{r}}{\norm{\vec{r}}}\vdot\grad f\]
       \end{description}
 }
+
 
 \section{Symbole, Konstanten, Präfixe}
 
@@ -195,7 +196,7 @@
       \end{tblr}
 }
 
-\pagebreak
+\columnbreak
 \section{Maxwell-Gleichungen / \textit{Maxwell's equations}}
 
 \mybox{\textbf{Maxwell-Gleichungen / \textit{Maxwell's equations}}}{
@@ -218,11 +219,9 @@
 }
 
 \section {Elektrostatik / \textit{Electrostatics}}
-
-
 \mybox{\textbf{Allgemeine Eigenschaften / \textit{General properties}}}{
       \begin{description}
-            \item [Permittivität / \textit{Permittivity}]\leavevmode\\
+            \item [Permittivität / \textit{Permittivity}]\leavevmode\\[1em]
                   \[\varepsilon=\varepsilon_0\,\varepsilon\sub{r}\quad [\varepsilon]=\unit{\farad\per\meter}\]
             \item [Elektrische Ladung / \textit{Electric charge}]
                   \[Q=\int\limits_{V}\rho\,\dd\,V\quad [Q]=\unit{\coulomb}=\unit{\ampere\second}\]
@@ -269,7 +268,11 @@
             \item [Kapazität / \textit{Capacitance}]
                   \[C=\frac{Q}{U}\quad [C]=\unit{\farad}=\unit{\coulomb\per\volt}\]
             \item [Energie / \textit{Energy}]
-                  \[\Delta W\sub{ab}  =-Q\,\int_{a}^{b}\vec{E}\vdot\dd\vec{r}=Q\,\left(\varphi\sub{b}-\varphi\sub{a}\right)=-Q\,U\sub{ab}\quad [W]=\unit{\joule}=\unit{\kilogram\meter\squared\per\second\squared}\]
+                  \[ W\sub{ab}  =-Q\,\int_{a}^{b}\vec{E}\vdot\dd\vec{r}=Q\,\left(\varphi\sub{b}-\varphi\sub{a}\right)=-Q\,U\sub{ab}\quad [W]=\unit{\joule}=\unit{\kilogram\meter\squared\per\second\squared}\]\\[1em]
+                  \[W\sub{ab}\begin{cases}
+                              >0\quad & \textrm{Arbeit wird am Feld verrichtet / \textit{Work is done on the field}}  \\
+                              <0\quad & \textrm{Arbeit wird vom Feld verrichtet / \textit{Work is done by the field}}
+                                    \end{cases}\]
             \item [Leistung / \textit{Power}]
                   \[P=U\,I=I^2\,R=\frac{U^2}{R}\quad [P]=\unit{\watt}=\unit{\joule\per\second}\]
             \item [Elektrische Flussdichte / \textit{Electric flux density}]
@@ -287,6 +290,7 @@
       \end{description}
 }
 
+\columnbreak
 \mybox{\textbf{Spezifische Geometrien / \textit{Specific geometries}}}{
       \begin{description}
             \item [Punktladung / \textit{Point charge}]
@@ -334,7 +338,7 @@
             \item [Zylindrischer Kondensator / \textit{Cylindrical capacitor} $R\sub{1}<R\sub{2}$]
                   \[  C =\frac{2\,\pi\,\varepsilon\,l}{\ln(\frac{R\sub{2}}{R\sub{1}})}\]
             \item [Kugelkondensator / \textit{Spherical capacitor} $R\sub{1}<R\sub{2}$]
-                  \[ C =\frac{4\,\pi\,\varepsilon}{\frac{1}{R\sub{1}}-\frac{1}{R\sub{2}}}\]
+                  \[ C =4\,\pi\,\varepsilon\,\frac{R_1\,R_2}{R_2 - R_1}\]
             \item [Parallele Zylinder / \textit{Parallel cylinders}]
                   \[C=\frac{\pi\,\varepsilon\,l}{\arcosh{\frac{d}{2\,R}}}\]
             \item [Zylinder/Platte / \textit {Cylinder/plate}]
@@ -342,13 +346,12 @@
       \end{description}
 }
 
-
-
+\columnbreak
 \section{Magnetostatik / \textit{Magnetostatics}}
 
 \mybox{\textbf{Allgemeine magnetische Felder / \textit{General magnetic fields}}}{
       \begin{description}
-            \item [Permeabilität / \textit{Permeability}]\leavevmode\\
+            \item [Permeabilität / \textit{Permeability}]\leavevmode\\[1em]
                   \[\mu=\mu_0\,\mu\sub{r}\quad [\mu]=\unit{\henry\per\meter}\]
             \item [Magnetische Flussdichte / \textit{Magnetic flux density}]
                   \[\vec{B}=\mu\,\vec{H}\quad [B]=\unit{\tesla}=\unit{\volt\second\per\meter\squared}\]
@@ -356,7 +359,7 @@
                   \begin{itemize}
                         \item Allgemein / \textit{In general}
                               \[\vec{F}=Q\,\vec{v}\cross\vec{B}\quad [F]=\unit{\newton}=\unit{\kilogram\meter\per\second\squared}\]
-                        \item Bewegung senkrecht zum Magnetfeld / \textit{Motion perpendicular to magnetic field}
+                        \item Bewegung senkrecht zum Magnetfeld / \textit{Motion perpendicular to magnetic field}\leavevmode\\[1em]
                               \[\norm{\vec{F}}=\abs{Q}\,\norm{\vec{v}}\,\norm{\vec{B}}\]
                         \item Bewegung parallel zum Magnetfeld / \textit{Motion parallel to magnetic field}
                               \[\vec{F}=0\]
@@ -416,6 +419,7 @@
       \end{description}
 }
 
+\columnbreak      
 \section{Halbleiterbauelemente / \textit{Semiconductor devices}}
 \mybox{\textbf{Halbleiterphysik / \textit{Physics of semiconductors}}}{
       \begin{description}
@@ -509,7 +513,7 @@
 
 
 
-% \pagebreak
+\pagebreak
 
 \end{multicols}
 % End the document
