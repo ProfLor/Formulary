@@ -1,0 +1,292 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesFile{Examination.sty}[2026/01/09 Merged Exam style with File 2 layout]
+
+% Needs etoolbox for \ifdefstring, so load it here
+\RequirePackage{etoolbox}
+
+% Generic exam metadata hooks
+\providecommand{\pdfTitle}{Formelsammlung Grundlagen Elektronik / Bauelemente}
+\providecommand{\pdfTitleEN}{Formulary Basics of electronics and components}
+\providecommand{\pdfAuthor}{Prof. Dr. Henning Lorrmann}
+\providecommand{\FormularyVersion}{1.3.0}
+
+
+
+% PDF metadata hooks
+\providecommand{\pdfKeywords}{Elektrostatik, Magnetostatik, Halbleiter, Formelsammlung, Electrostatics, Magnetostatics, Semiconductors, Formulary}
+
+
+
+\providecommand{\THWSLogoHeader}{id23_fe-thws_logo_o_cmyk}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Engine / font setup (FROM FILE 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{lmodern}
+\else
+  \RequirePackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Text layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{microtype}
+
+% Language and paragraph spacing (FROM FILE 2: both languages)
+\RequirePackage[ngerman,english]{babel}
+\babeltags{de = ngerman}
+\babeltags{en = english}
+\RequirePackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math / symbols (merged from both)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{mathrsfs}
+\RequirePackage{textcomp}
+\RequirePackage[official]{eurosym}
+
+% Line-breaking displayed equations
+\RequirePackage{breqn}
+
+% FROM FILE 2: Additional math helpers
+\RequirePackage{commath}
+\RequirePackage{bm}
+\RequirePackage{scalerel}
+\RequirePackage{esint}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SI units + physics (merged from both files)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{siunitx}
+
+% Unified siunitx setup (language-conditional)
+\sisetup{
+  group-separator = {\,},
+  group-minimum-digits = 4,
+  output-complex-root = \mathrm{j},
+  complex-root-position = before-number,
+  exponent-product = \cdot,
+  per-mode = fraction
+}
+
+\ifdefstring{\ExamLanguage}{ngerman}{%
+  \sisetup{locale = DE, output-decimal-marker = {,}}%
+}{%
+  \sisetup{locale = US, output-decimal-marker = {.}}%
+}
+
+% Custom SI units (merged from both files)
+\DeclareSIUnit{\sieuro}{\mbox{\euro}}
+\DeclareSIUnit{\Bit}{Bit}
+\DeclareSIUnit{\Byte}{Byte}
+\DeclareSIUnit\var{var}
+\DeclareSIUnit\VA{VA}
+
+% Physics package with non-bold del operators (from both files)
+\RequirePackage{physics}
+\renewcommand{\grad}{\vec{\nabla}}
+\renewcommand{\div}{\vec{\nabla}\cdot}
+\renewcommand{\curl}{\vec{\nabla}\times}
+
+% Suppress physics/siunitx warnings
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+
+% Make physics/siunitx coexist
+\AtBeginDocument{\ifcsname qty\endcsname\let\qty\SI\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tables (merged from both files)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{booktabs}
+% FROM FILE 2: Modern table package
+\RequirePackage{tabularray}
+\UseTblrLibrary{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{graphicx}
+\graphicspath{{figures/}}
+
+% FROM FILE 2: Multicol support
+\RequirePackage{multicol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors (THWS) - Using File 1 naming ("grey")
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xcolor}
+\definecolor{thws-orange}{cmyk}{0,0.7,1,0}
+\definecolor{thws-blue}{cmyk}{1,0.44,0,0.57}
+\definecolor{thws-grey-80}{gray}{0.2}
+\definecolor{thws-grey-60}{gray}{0.4}
+\definecolor{thws-grey-40}{gray}{0.6}
+\definecolor{thws-grey-20}{gray}{0.8}
+
+% Aliases for File 2 compatibility
+\colorlet{thws-gray-80}{thws-grey-80}
+\colorlet{thws-gray-60}{thws-grey-60}
+\colorlet{thws-gray-40}{thws-grey-40}
+\colorlet{thws-gray-20}{thws-grey-20}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Boxes (FROM FILE 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[breakable]{tcolorbox}
+\newcommand{\mybox}[2]{%
+  \begin{tcolorbox}[%
+      breakable,
+      colback=thws-grey-20!0,
+      colframe=thws-grey-20,
+      boxsep=1pt,
+      arc=0pt,
+      outer arc=0pt,
+      title={\textcolor{black}{#1}}
+    ]%
+    \textcolor{black}{#2}
+  \end{tcolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lists / headings compactness (FROM FILE 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{enumitem}
+\setlist[itemize]{noitemsep, nolistsep, topsep=0pt, partopsep=0pt}
+
+\RequirePackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\titleformat*{\section}{\small\bfseries}
+
+% Compact display math spacing (FROM FILE 2)
+\expandafter\def\expandafter\normalsize\expandafter{%
+  \normalsize%
+  \setlength\abovedisplayskip{0pt}%
+  \setlength\belowdisplayskip{0pt}%
+  \setlength\abovedisplayshortskip{-8pt}%
+  \setlength\belowdisplayshortskip{0pt}%
+}
+
+\renewcommand{\baselinestretch}{0.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ordinal numbers (FROM FILE 1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[super]{nth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abbreviations (FROM FILE 1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xspace}
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+\newcommand{\dahe}{\mbox{d.\,h.}\xspace}
+\newcommand{\ua}{\mbox{u.\,a.}\xspace}
+\newcommand{\bzw}{\mbox{bzw.}\xspace}
+\newcommand{\engl}{\mbox{engl.}\xspace}
+\newcommand{\ggf}{\mbox{ggf.}\xspace}
+\newcommand{\etc}{\mbox{etc.}\xspace}
+\newcommand{\evtl}{\mbox{evtl.}\xspace}
+\newcommand{\usw}{\mbox{usw.}\xspace}
+\newcommand{\vs}{\mbox{vs.}\xspace}
+\newcommand{\vgl}{\mbox{vgl.}\xspace}
+\newcommand{\ie}{\mbox{i.\,e.}\xspace}
+\newcommand{\eg}{\mbox{e.\,g.}\xspace}
+\newcommand{\cpp}{C\texttt{++}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TikZ / circuit diagrams (MERGED - more options from File 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{tikz}
+\RequirePackage{tikz-timing}
+\RequirePackage[siunitx,RPvoltages,european]{circuitikz}
+\ctikzset{>=latex, tripoles/european not symbol=ieee circle}
+\usetikzlibrary{angles,quotes,arrows,automata,positioning,babel,fadings}
+
+% FROM FILE 2: Additional TikZ libraries
+\RequirePackage{tkz-euclide}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF metadata / hyperlinks (merged from both)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{hyperref}
+\hypersetup{
+  unicode=true,
+  pdftitle={\pdfTitle / \pdfTitleEN},
+  pdfauthor={\pdfAuthor},
+  pdfkeywords={\pdfKeywords},
+  pdfproducer={},
+  pdfcreator={},
+  colorlinks=true,
+  urlcolor=thws-blue,
+  linkcolor=black
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE LAYOUT + HEADER/FOOTER: FROM FILE 2 (geometry + fancyhdr)
+% ✅ COMPLETE IMPLEMENTATION WITH TITLE/HEADER/FOOTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{geometry}
+\geometry{top=1in, headheight=0.5in, headsep=0.1in, margin=0.5in}
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+
+% Exam style header (no secondary English title)
+\fancyhead[C]{\shortstack[c]{\pdfTitle\\\textit{\pdfTitleEN}}}
+\fancyhead[R]{\includegraphics[width=3cm]{id23_fe-thws_logo_o_cmyk}}
+\fancyfoot[R]{\tiny{\thepage}}
+\fancyfoot[L]{\tiny{\pdfAuthor}}
+\fancyfoot[C]{\tiny{\today, Version \FormularyVersion}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom commands 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Domain-specific shortcuts (merged)
+\newcommand{\jj}{\mathrm{j\,}}
+\newcommand{\laplace}{\mathscr{L}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\muvac}{4\,\pi\cdot10^{-7}\,\unit{\volt\second\per\ampere\per\meter}}
+\newcommand{\epsvac}{8.854\,\cdot\,10^{-12}\,\unit{\ampere\second\per\volt\per\meter}}
+\newcommand{\sub}[1]{_{\mathrm{{#1}}}}
+\newcommand{\ii}{\hat{\imath}}
+\newcommand{\arcosh}{\mathrm{arcosh}}
+
+% Underline with proper spacing (FROM FILE 1)
+\RequirePackage{stackengine}
+\def\buline#1{\def\stacktype{L}\def\stackalignment{l}%
+  \ThisStyle{\stackon[0pt]{$\SavedStyle#1$}{\let\mathit\relax%
+      $\SavedStyle\underline{\phantom{\mathrm{#1}}}$}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description environment tweak (FROM FILE 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{enumerate}
+\renewenvironment{description}[1][0pt]
+{\list{}{\labelwidth=0pt \leftmargin=#1
+    \let\makelabel\descriptionlabel}}
+{\endlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Avoid black boxes in overfull lines
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overfullrule=0pt
+

@@ -1,0 +1,516 @@
+\documentclass[a4paper,7pt]{extarticle} % 10pt - 30% = 7pt
+
+% Include necessary packages
+\usepackage{style/Examination}
+
+% Start the document
+\begin{document}
+\fontsize{7pt}{8pt}\selectfont
+
+\begin{multicols}{2}
+ 
+% \mybox{Title}{
+% Text inside of the box.
+% With equations:
+%     \begin{subequations}
+%     \begin{align}
+%     v &= u + at \\
+%     s &= ut + \frac{1}{2}at^2 \\
+%     v^2 &= u^2 + 2as
+%     \end{align}
+%     \end{subequations}
+% }
+\section {Vektorrechnung / \textit{vector calculus}}
+\mybox{\textbf{Grundlegende Vektoroperationen / \textit{Basic vector operations}}}{
+      \begin{description}
+            \item [Einheitsvektor / \textit{Unit vector}]
+                  \[\vec{e}\sub{a}=\frac{\vec{a}}{\norm{\vec{a}}}\]
+            \item [Vektornorm / \textit{Vector norm} \(a=\norm{\vec{a}}\)]
+                  \begin{align*}
+                        a   & =\left(a\sub{x}^2+a\sub{y}^2+a\sub{z}^2\right)^{\frac{1}{2}} \\
+                        a^2 & =a\sub{x}^2+a\sub{y}^2+a\sub{z}^2                            \\
+                        a^3 & =\left(a\sub{x}^2+a\sub{y}^2+a\sub{z}^2\right)^{\frac{3}{2}}
+                  \end{align*}
+            \item [Skalarmultiplikation / \textit{Scalar multiplication}]
+                  \[ \lambda \,\vec{a} =\left(\lambda \,a\sub{x},\, \lambda \,a\sub{y},\, \lambda \,a\sub{z}\right)\]
+            \item [Skalarprodukt / \textit{Scalar product}]
+                  \[\vec{a} \vdot \vec{b}=a\sub{x}\, b\sub{x}+a\sub{y}\, b\sub{y}+a\sub{z}\, b\sub{z}=\lvert \vec{a} \rvert \,\lvert \vec{b} \rvert \, \cos(\phi)\]
+            \item [Kreuzprodukt / \textit{Cross product}]
+                  \[\vec{a} \cross \vec{b}=\begin{pmatrix}
+                              a\sub{x} \\
+                              a\sub{y} \\
+                              a\sub{z}
+                        \end{pmatrix} \cross \begin{pmatrix}
+                              b\sub{x} \\
+                              b\sub{y} \\
+                              b\sub{z}
+                        \end{pmatrix}=\begin{pmatrix}
+                              a\sub{y}\, b\sub{z}-a\sub{z}\, b\sub{y} \\
+                              a\sub{z}\, b\sub{x}-a\sub{x}\, b\sub{z} \\
+                              a\sub{x}\, b\sub{y}-a\sub{y}\, b\sub{x}
+                        \end{pmatrix}=  \lvert \vec{a} \rvert \,\lvert \vec{b} \rvert  \,\sin(\phi) \,\vec{n}\]
+      \end{description}
+}
+\mybox{\textbf{Vektor- und Skalarfelder / \textit{Vector and scalar fields}}}{
+      \begin{description}
+            \item [Skalarfeld / \textit{Scalar field}]
+                  \[f(x,y,z):\,\mathbb{R}^3 \to \mathbb{R}\]
+            \item [Vektorfeld / \textit{Vector field}]
+                  \[\vec{F}(x,y,z):\,\mathbb{R}^3 \to \mathbb{R}^3\]
+      \end{description}
+}
+
+\mybox{\textbf{Differentialoperatoren / \textit{Differential operators}}}{
+      \begin{description}
+            \item [Nabla Operator / \textit{Del operator}]
+                  \[\grad = \left(\pdv{}{x},\,\pdv{}{y},\,\pdv{}{z}\right)\]
+            \item [Gradient / \textit{Gradient}]
+                  \[\mathrm{grad}\,f=\grad f = \left(\pdv{f}{x},\,\pdv{f}{y},\,\pdv{f}{z}\right)\]
+            \item [Divergenz / \textit{Divergence}]
+                  \[\mathrm{div}\,\vec{F}=\div\vec{F} = \pdv{F\sub{x}}{x} + \pdv{F\sub{y}}{y} + \pdv{F\sub{z}}{z} \]
+            \item [Rotation / \textit{Curl}]
+                  \[\mathrm{rot}\,\vec{F}=\curl \vec{F} = \left(\pdv{F\sub{z}}{y}-\pdv{F\sub{y}}{z},\, \pdv{F\sub{x}}{z}-\pdv{F\sub{z}}{x},\, \pdv{F\sub{y}}{x}-\pdv{F\sub{x}}{y}\right)\]
+            \item [Laplace-Operator / \textit{Laplace operator}]
+                  \[\Delta f = \grad^2 f = \div(\grad f) = \pdv[2]{f}{x} + \pdv[2]{f}{y} + \pdv[2]{f}{z}\]
+            \item [Richtungsableitung / \textit{Directional derivative}]
+                  \[\pdv{f}{s}=\frac{\vec{r}}{\norm{\vec{r}}}\vdot\grad f\]
+      \end{description}
+}
+
+\section{Symbole, Konstanten, Präfixe}
+
+\mybox{\textbf{Konstanten / \textit{Constants}}}{
+      \begin{description}
+            \item [Lichtgeschwindigkeit / \textit{Speed of light}]
+                  \[c=\qty{299792458}{\meter\per\second}\]
+            \item [Elementarladung / \textit{Elementary charge}]
+                  \[e=\qty{1.602176634e-19}{\coulomb}\]
+            \item [Permittivität des Vakuums / \textit{Permittivity of vacuum}]
+                  \[\varepsilon_0=\frac{1}{\mu_0\,c^2}=\qty{8.854187812e-12}{\farad\per\meter}\]
+            \item [Permeabilität des Vakuums / \textit{Permeability of vacuum}]
+                  \[\mu_0=4\,\pi\,\cdot\,10^{-7}\,\unit{\henry\per\meter}=\qty{1.256637062e-6}{\henry\per\meter}\]
+            \item [Boltzmann-Konstante / \textit{Boltzmann constant}]
+                  \[k=\frac{R}{N\sub{A}}=\qty{1.380648000e-23}{\joule\per\kelvin}=\qty{8.617333262e-5}{\electronvolt\per\kelvin}\]
+            \item [Absoluter Nullpunkt / \textit{Absolute zero}]
+                  \[T\sub{0}=\qty{0}{\kelvin}=-\qty{273.15}{\celsius}\]
+            \item [Avogadro-Konstante / \textit{Avogadro constant}]
+                  \[N\sub{A}=\qty{6,022136736e23}{\per\mole}\]
+            \item [Universelle Gaskonstante / \textit{Universal gas constant}]
+                  \[R=\qty{8.314462618}{\joule\per\mole\kelvin}\]
+      \end{description}
+}
+
+\mybox{\textbf{Präfixe / \textit{Prefixes}}}{
+      \begin{tblr}{
+            colspec={X[1.1cm,c]X[c]X[1.1cm,c] | X[1.1cm,c]X[c]X[1.1cm,c]},
+            % row{odd}={bg=gray!5},
+            % row{even}={bg=gray!10},
+            cell{1}{1}={font=\bfseries},
+            }
+            \toprule
+            \textbf{Präfix \\\textit{Prefix}} & \textbf{Symbol} & \textbf{Faktor\\\textit{Factor}}  & \textbf{Präfix\\\textit{Prefix}} & \textbf{Symbol} & \textbf{Faktor\\\textit{Factor}}  \\
+            \midrule
+            {Piko          \\\textit{Pico}} & $p$ & \(10^{-12}\) &   {Kilo\\\textit{Kilo}} & $k$ & \(10^{3}\) \\
+            {Nano          \\\textit{Nano}} & $n$ & \(10^{-9}\) &  {Mega\\\textit{Mega}} & $M$ & \(10^{6}\) \\
+            {Mikro         \\\textit{Micro}} & $\mu$ & \(10^{-6}\) &  {Giga\\\textit{Giga}} & $G$ & \(10^{9}\) \\
+            {Milli         \\\textit{Milli}} & $m$ & \(10^{-3}\) &   {Tera\\\textit{Tera}} & $T$ & \(10^{12}\) \\
+            \bottomrule
+      \end{tblr}
+}
+
+\mybox{\textbf{Geometrische Größen / \textit{Geometric quantities}}}{
+      \begin{description}
+            \item [Kreisumfang / \textit{Circumference of a circle}]
+                  \[U=2\,\pi\,R\]
+            \item [Kreisfläche / \textit{Area of a circle}]
+                  \[A=\pi\,R^2\]
+            \item [Kugeloberfläche / \textit{Surface area of a sphere}]
+                  \[A=4\,\pi\,R^2\]
+            \item [Kugelvolumen / \textit{Volume of a sphere}]
+                  \[V=\frac{4}{3}\,\pi\,R^3\]
+            \item [Mantelfläche Zylinder / \textit{Cylinder lateral surface area}]
+                  \[A=2\,\pi\,R\,l\]
+      \end{description}
+}
+
+\mybox{\textbf{Größen und Einheiten / \textit{Quantities and units}}}{
+      \begin{tblr}{
+            colspec={X[1.1cm,c]X[4.6cm,c]X[1.2cm,c]},
+            % row{odd}={bg=gray!5},
+            % row{even}={bg=gray!1ß},
+            cell{1}{1}={font=\bfseries},
+            }
+            \toprule
+            \textbf{Symbol                                                                                                                                                                         \\\textit{Symbol}} & \textbf{Größe\\ \textit{Quantity}}                                                          & \textbf{Einheit\\\textit{Unit}}                                  \\
+            \midrule
+            \SetCell[c=3]{l}{\textbf{Geometrische Größen / \textit{Geometric quantities}}   }                                                                                                      \\
+            \midrule
+            \(A\)                           & Fläche / \textit{Area}                                                                  & \unit{\meter\squared}                                      \\
+            \(d\)                           & Abstand (zw. Ladungen, Platten, \dots) / \textit{Distance (b/w charges, plates, \dots)} & \unit{\meter}                                              \\
+            \(\vec{l}\)                     & Pfad / \textit{Path}                                                                    & \unit{\meter}                                              \\
+            \(l\)                           & Länge (Draht, Zylinder, \dots) / \textit{Length (Wire, cylinder, \dots)}                & \unit{\meter}                                              \\
+            \(R\)                           & Radius / \textit{Radius}                                                                & \unit{\meter}                                              \\
+            \(V\)                           & Volumen / \textit{Volume}                                                               & \unit{\meter\cubed}                                        \\
+            \(\vec{r},\,\vec{a},\,\vec{b}\) & Ortsvektor/ \textit{Position vector}                                                    & \unit{\meter}                                              \\
+            \midrule
+            \SetCell[c=3]{l}{\textbf{Elektrische Größen / \textit{Electrical quantities}}}                                                                                                         \\
+            \midrule
+            \(C\)                           & Kapazität / \textit{Capacitance}                                                        & \unit{\farad} = \unit{\coulomb\per\volt}                   \\
+            \(\vec{D}\)                     & Flussdichte / \textit{Flux Density}                                                     & \unit{\coulomb\per\meter\squared}                          \\
+            \(\vec{E}\)                     & Feldstärke / \textit{Field Strength}                                                    & \unit{\volt\per\meter}                                     \\
+            \(G\)                           & Leitwert / \textit{Conductance}                                                         & \unit{\siemens} = \unit{\ampere\per\volt}                  \\
+            \(i,\,I\)                       & Strom / \textit{Current}                                                                & \unit{\ampere} = \unit{\coulomb\per\second}                \\
+            \(\vec{J}\)                     & Stromdichte / \textit{Current Density}                                                  & \unit{\ampere\per\meter\squared}                           \\
+            \(Q\)                           & Ladung / \textit{Charge}                                                                & \unit{\coulomb} = \unit{\ampere\second}                    \\
+            \(r\)                           & Kleinsignalwiderstand / \textit{Small-signal resistance}                                & \unit{\ohm}                                                \\
+            \(R\)                           & Widerstand / \textit{Resistance}                                                        & \unit{\ohm} = \unit{\volt\per\ampere}                      \\
+            \(\varrho\)                     & Spezifischer Widerstand / \textit{Resistivity}                                          & \unit{\ohm\meter}                                          \\
+            \(u,\,U\)                       & Spannung / \textit{Voltage}                                                             & \unit{\volt}                                               \\
+            \(W\)                           & Energie / \textit{Energy}                                                               & \unit{\joule} = \unit{\volt\ampere\second}                 \\
+            \(\kappa\)                      & Leitfähigkeit / \textit{Conductivity}                                                   & \unit{\siemens\per\meter}=\unit{\per\ohm\per\meter}        \\
+            \(\varphi\)                     & Potential / \textit{Potential}                                                          & \unit{\volt}                                               \\
+            \(\Phi\)                        & Elektrischer Fluss / \textit{Electric flux}                                             & \unit{\coulomb}                                            \\           
+             \midrule
+            \SetCell[c=3]{l}{\textbf{Magnetische Größen / \textit{Magnetic quantities}}}                                                                                                           \\
+            \midrule
+            \(\vec{B}\)                     & Flussdichte / \textit{ Flux density}                                                    & \unit{\tesla} = \unit{\volt\second\per\meter\squared}      \\
+            \(\vec{H}\)                     & Feldstärke / \textit{ Field strength}                                                   & \unit{\ampere\per\meter}                                   \\
+            \(L\)                           & Induktivität / \textit{Inductance}                                                      & \unit{\henry} = \unit{\weber\per\ampere}                   \\
+\(\Phi\)                        & Magnetischer Fluss / \textit{Magnetic flux}                                             & \unit{\weber} = \unit{\volt\second}                        \\            
+\midrule
+            \SetCell[c=3]{l}{\textbf{Physikalische Größen / \textit{Physical quantities}}}                                                                                                         \\
+            \midrule
+            \(F\)                           & Kraft / \textit{Force}                                                                  & \unit{\newton} = \unit{\kilogram\meter\per\second\squared} \\
+            \(m\)                           & Masse / \textit{Mass}                                                                   & \unit{\kilogram}                                           \\
+            \(P\)                           & Leistung / \textit{Power}                                                               & \unit{\watt} = \unit{\volt\ampere}                         \\
+            \(t\)                           & Zeit / \textit{Time}                                                                    & \unit{\second}                                             \\
+            \(T\)                           & Absolute Temperatur / \textit{Absolute temperature}                                     & \unit{\kelvin}                                             \\
+            \(v\)                           & Geschwindigkeit / \textit{Velocity}                                                     & \unit{\meter\per\second}                                   \\
+            \(W\)                           & Arbeit / \textit{Work}                                                                  & \unit{\joule} = \unit{\volt\ampere\second}                 \\
+            \midrule
+            \SetCell[c=3]{l}{\textbf{Chemische Größen / \textit{Chemical quantities}}}                                                                                                             \\
+            \midrule
+            \(n\)                           & Ladungsträgerdichte / \textit{Charge carrier density }                                  & \unit{\per\meter\cubed}                                    \\
+            \(N\)                           & Teilchenzahl / \textit{Number of particles}                                             & -
+      \end{tblr}
+}
+
+\pagebreak
+\section{Maxwell-Gleichungen / \textit{Maxwell's equations}}
+
+\mybox{\textbf{Maxwell-Gleichungen / \textit{Maxwell's equations}}}{
+      \begin{description}
+            \item [1. Gauss'sches Gesetz / \textit{Gauss's law}]
+                  \[\div \vec{D}=\rho \quad\quad \oiint_{S}\vec{D}\vdot\dd{\vec{A}}=Q\]
+            \item [2. Faraday'sches Gesetz / \textit{Faraday's law}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein / \textit{In general}
+                              \[\curl \vec{E}=-\pdv{\vec{B}}{t}\quad\quad \oint_{C}\vec{E}\vdot\dd\vec{l}=-\int_{S}\pdv{\vec{B}}{t}\vdot\dd\vec{A}\]
+                        \item Gleichgewicht / \textit{Equilibrium}
+                              \[\curl \vec{E}=0\quad\quad \oint_{C}\vec{E}\vdot\dd\vec{l}=0\]
+                  \end{itemize}
+            \item [3. Gauss'sches Gesetz für Magnetfelder /]\leavevmode\\
+                  \begin{flushright}\textbf{\textit{Gauss's law for magnetism}}\\[1em] \end{flushright}
+                  \[\div \vec{B}=0\quad\quad \oiint_{S}\vec{B}\vdot\dd\vec{A}=0\]
+            \item [4. Ampèresches Gesetz (statisch) / \textit{Ampère's law} (static)]
+                  \[\curl \vec{H}=\vec{J}\quad\quad \oint_{C}\vec{H}\vdot\dd\vec{l}=\int_{S}\vec{J}\vdot\dd\vec{A}\]
+      \end{description}
+}
+
+\section {Elektrostatik / \textit{Electrostatics}}
+
+
+\mybox{\textbf{Allgemeine Eigenschaften / \textit{General properties}}}{
+      \begin{description}
+            \item [Permittivität / \textit{Permittivity}]\leavevmode\\
+                  \[\varepsilon=\varepsilon_0\,\varepsilon\sub{r}\quad [\varepsilon]=\unit{\farad\per\meter}\]
+            \item [Elektrische Ladung / \textit{Electric charge}]
+                  \[Q=\int\limits_{V}\rho\,\dd\,V\quad [Q]=\unit{\coulomb}=\unit{\ampere\second}\]
+            \item [Ladungsdichte / \textit{Charge density}]\leavevmode\\
+                  \begin{itemize}
+                        \item Linie/ \textit{Line}
+                              \[\lambda=\dv{Q}{l} \quad [\lambda]=\unit{\coulomb\per\meter}\]
+                        \item Fläche/ \textit{Surface }
+                              \[\sigma=\dv{Q}{A} \quad [\sigma]=\unit{\coulomb\per\meter\squared}\]
+                        \item Volumen / \textit{Volume}
+                              \[\rho=\dv{Q}{V} \quad [\rho]=\unit{\coulomb\per\meter\cubed}\]
+                  \end{itemize}
+            \item [Stromdichte / \textit{Current density}]
+                  \[\vec{J}=\frac{\dd I}{\dd A}=\kappa\,\vec{E}=\frac{\vec{E}}{\varrho}\quad [\vec{J}]=\unit{\ampere\per\meter\squared},\quad[\kappa]=\unit{\siemens\per\meter}\qq{and}[\varrho]=\unit{\ohm\meter}\]
+            \item [Strom / \textit{Current}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein / \textit{In general}
+                              \[I=\int_{S}\vec{J}\vdot\dd\vec{A}\quad [I]=\unit{\ampere}=\unit{\coulomb\per\second}\]
+                        \item Stromdichte parallel zu Fläche / \textit{Current density parallel to surface}
+                              \[I=\norm{\vec{J}}\,\norm{\vec{A}}\]
+                  \end{itemize}
+            \item [Kontinuitätsgleichung / \textit{Continuity equation}]
+                  \[\div \vec{J}=-\pdv{\rho}{t}\quad\quad \oint_{S}\vec{J}\vdot\dd\vec{A}=-\dv{Q\sub{V}}{t}\]
+            \item [Elektrisches Potential / \textit{Electric potential}]
+                  \[\varphi=\frac{W}{Q}\quad [\varphi]=\unit{\volt}\]
+            \item [Elektrische Feldstärke / \textit{Electric field strength}]
+                  \[\vec{E}=-\grad{\varphi}\quad[E]=\unit{\volt\per\meter}\]
+            \item [Coulombkraft / \textit{Coulomb force}]
+                  \[\vec{F}=Q\,\vec{E}\quad[F]=\unit{\newton}=\unit{\kilogram\meter\per\second\squared}\]
+            \item [Spannung / \textit{Voltage}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein / \textit{In general}
+                              \[U\sub{ab}=\int_{a}^{b}\vec{E}\vdot\dd\vec{r}=\varphi\sub{a}-\varphi\sub{b}\quad [U]=\unit{\volt}\]
+                        \item Bei konstantem Feld / \textit{For a constant field}
+                              \[U\sub{ab}=\vec{E}\vdot\left(\vec{r}\sub{b}-\vec{r}\sub{a}\right)\]
+                  \end{itemize}
+            \item [Elektrischer Widerstand / \textit{Electric resistance}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein / \textit{In general}
+                              \[R=\frac{\int\vec{E}\vdot\dd{x}}{\int\vec{J}\vdot\dd{A}}\quad [R]=\unit{\ohm}=\unit{\volt\per\ampere}\]
+                        \item Ohm'sches Gesetz / \textit{Ohm's law}
+                              \[R=\frac{U}{I}=\frac{\varrho\,l}{A}\quad [\varrho]=\unit{\ohm\meter}\]
+                  \end{itemize}
+            \item [Kapazität / \textit{Capacitance}]
+                  \[C=\frac{Q}{U}\quad [C]=\unit{\farad}=\unit{\coulomb\per\volt}\]
+            \item [Energie / \textit{Energy}]
+                  \[\Delta W\sub{ab}  =-Q\,\int_{a}^{b}\vec{E}\vdot\dd\vec{r}=Q\,\left(\varphi\sub{b}-\varphi\sub{a}\right)=-Q\,U\sub{ab}\quad [W]=\unit{\joule}=\unit{\kilogram\meter\squared\per\second\squared}\]
+            \item [Leistung / \textit{Power}]
+                  \[P=U\,I=I^2\,R=\frac{U^2}{R}\quad [P]=\unit{\watt}=\unit{\joule\per\second}\]
+            \item [Elektrische Flussdichte / \textit{Electric flux density}]
+                  \[\vec{D}=\varepsilon\,\vec{E}\quad[D]=\unit{\coulomb\per\meter\squared}\]
+            \item [Elektrischer Fluss / \textit{Electric flux}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein (Gauss'sches Gesetz) /\textit{In general (Gauss's law)}
+                              \[\Phi=\oiint_{S}\vec{D}\vdot\dd\vec{A}=Q\quad [\Phi]=\unit{\coulomb}\]
+                        \item Feld parallel zur Fläche / \textit{Field parallel to surface}
+                              \[\Phi=\norm{\vec{D}}\,\norm{\vec{A}}=\begin{cases}
+                                          Q\quad & Q\textrm{ innerhalb/\textit{inside} } S  \\
+                                          0\quad & Q\textrm{ außerhalb/\textit{outside} } S
+                                    \end{cases}\]
+                  \end{itemize}
+      \end{description}
+}
+
+\mybox{\textbf{Spezifische Geometrien / \textit{Specific geometries}}}{
+      \begin{description}
+            \item [Punktladung / \textit{Point charge}]
+                  \begin{align*}
+                        \varphi & =\frac{1}{4\,\pi\,\varepsilon}\,\frac{Q}{r}                   \\
+                        \vec{E} & =\frac{1}{4\,\pi\,\varepsilon}\,\frac{Q}{r^2}\,\vec{e}\sub{r} \\
+                  \end{align*}
+            \item [Zwei Punktladungen / \textit{Two point charges}]
+                  \begin{align*}
+                        \varphi & =\frac{1}{4\,\pi\,\varepsilon}\,\left(\frac{Q_1}{r_1}+\frac{Q_2}{r_2}\right)                                         \\
+                        \vec{E} & =\frac{1}{4\,\pi\,\varepsilon}\,\left(\frac{Q_1}{r_1^2}\,\vec{e}\sub{r_1}+\frac{Q_2}{r_2^2}\,\vec{e}\sub{r_2}\right) \\
+                        \vec{F} & =\frac{1}{4\,\pi\,\varepsilon}\,\frac{Q_1\,Q_2}{r^2}\,\vec{e}\sub{r}
+                  \end{align*}
+            \item [Leitfähige Kugel  / \textit{Conductive sphere}]
+                  \begin{align*}
+                        \varphi & =\begin{cases}
+                                         0                                          & r < R    \\
+                                         \frac{1}{4\,\pi\,\varepsilon}\,\frac{Q}{r} & r \geq R
+                                   \end{cases}                   \\
+                        \vec{E} & =\begin{cases}
+                                         0                                                            & r < R    \\
+                                         \frac{1}{4\,\pi\,\varepsilon}\,\frac{Q}{r^2}\,\vec{e}\sub{r} & r \geq R
+                                   \end{cases}
+                  \end{align*}
+            \item [Metalldraht unendlicher Länge / \textit{Metal wire of infinite length}]
+                  \begin{align*}
+                        \varphi & =\frac{\lambda}{2 \,\pi\,\varepsilon}\,\ln{r}           \\
+                        \vec{E} & =\frac{\lambda}{2\,\pi\,\varepsilon\,r}\,\vec{e}\sub{r}
+                  \end{align*}
+      \end{description}
+}
+\mybox{\textbf{Kondensatoren / \textit{Capacitors}}}{
+      \begin{description}
+            \item [Allgemeine Formel / \textit{General formula}]
+                  \begin{align*}
+                        C        & =\frac{Q}{U}\quad [C]=\unit{\farad}=\unit{\coulomb\per\volt} \\
+                        W        & =\frac{1}{2}\,C\,U^2                                         \\
+                        \Delta W & \begin{cases}
+                                          & >0\quad\mathrm{Laden / \textit{Charge}}       \\
+                                          & <0\quad\mathrm{Entladen / \textit{Discharge}}
+                                   \end{cases}
+                  \end{align*}
+            \item [Plattenkondensator / \textit{Parallel plate capacitor}]
+                  \[C =\frac{\varepsilon\,A}{d}\]
+            \item [Zylindrischer Kondensator / \textit{Cylindrical capacitor} $R\sub{1}<R\sub{2}$]
+                  \[  C =\frac{2\,\pi\,\varepsilon\,l}{\ln(\frac{R\sub{2}}{R\sub{1}})}\]
+            \item [Kugelkondensator / \textit{Spherical capacitor} $R\sub{1}<R\sub{2}$]
+                  \[ C =\frac{4\,\pi\,\varepsilon}{\frac{1}{R\sub{1}}-\frac{1}{R\sub{2}}}\]
+            \item [Parallele Zylinder / \textit{Parallel cylinders}]
+                  \[C=\frac{\pi\,\varepsilon\,l}{\arcosh{\frac{d}{2\,R}}}\]
+            \item [Zylinder/Platte / \textit {Cylinder/plate}]
+                  \[C=\frac{2\,\pi\,\varepsilon\,l}{\arcosh{\frac{d}{R}}}\]
+      \end{description}
+}
+
+
+
+\section{Magnetostatik / \textit{Magnetostatics}}
+
+\mybox{\textbf{Allgemeine magnetische Felder / \textit{General magnetic fields}}}{
+      \begin{description}
+            \item [Permeabilität / \textit{Permeability}]\leavevmode\\
+                  \[\mu=\mu_0\,\mu\sub{r}\quad [\mu]=\unit{\henry\per\meter}\]
+            \item [Magnetische Flussdichte / \textit{Magnetic flux density}]
+                  \[\vec{B}=\mu\,\vec{H}\quad [B]=\unit{\tesla}=\unit{\volt\second\per\meter\squared}\]
+            \item [Lorentz-Kraft / \textit{Lorentz force}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein / \textit{In general}
+                              \[\vec{F}=Q\,\vec{v}\cross\vec{B}\quad [F]=\unit{\newton}=\unit{\kilogram\meter\per\second\squared}\]
+                        \item Bewegung senkrecht zum Magnetfeld / \textit{Motion perpendicular to magnetic field}
+                              \[\norm{\vec{F}}=\abs{Q}\,\norm{\vec{v}}\,\norm{\vec{B}}\]
+                        \item Bewegung parallel zum Magnetfeld / \textit{Motion parallel to magnetic field}
+                              \[\vec{F}=0\]
+                        \item Substitute $Q\,\vec{v}=I\,\vec{l}$ for a current carrying wire.
+                  \end{itemize}
+                  \columnbreak 
+            \item [Magnetischer Fluss / \textit{Magnetic flux}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein (Gauss'sches Gesetz) / \textit{In general (Gauss's law)}
+                              \[\Phi=\oiint_{S}\vec{B}\vdot\dd\vec{A}\quad [\Phi]=\unit{\weber}=\unit{\volt\,\second}\]
+                        \item Feld parallel zur Fläche / \textit{Field parallel to surface}
+                              \[\Phi=\norm{\vec{B}}\,\norm{\vec{A}}\]
+                  \end{itemize}
+            \item [Magnetische Feldstärke / \textit{Magnetic field strength}]
+                  \[\vec{H}=\frac{\vec{B}}{\mu}\quad [H]=\unit{\ampere\per\meter}\]
+            \item [Selbstinduktivität / \textit{Self-inductance}]
+                  \[L=\frac{N\,\Phi}{i}\quad [L]=\unit{\henry}=\unit{\weber\per\ampere}\]
+            \item [Induzierte Spannung / \textit{Induced voltage}]
+                  \[u=-N\,\pdv{\Phi}{t}=-L\,\dv{i}{t}\]
+            \item [Magnetische Energie / \textit{Magnetic energy}]
+                  \[W=\frac{1}{2}\,L\,I^2\quad [W]=\unit{\joule}=\unit{\kilogram\meter\squared\per\second\squared}\]
+            \item [Magnetisch Durchflutung / \textit{Magnetomotive force}]\leavevmode\\
+                  \begin{itemize}
+                        \item Allgemein (Ampèresches Gesetz) / \textit{In general (Ampère's circuital law)}
+                              \[\Theta=\oint_{C}\vec{H}\vdot\dd\vec{l}=\int_{S}\vec{J}\vdot\dd\vec{A}\quad [\Theta]=\unit{\ampere}\]
+                        \item Feld parallel zur Fläche (Magnetischer Kreis) / \textit{Field parallel to surface (Magnetic circuit)}
+                              \[ N\,I=\sum_i H\sub{i}\,l\sub{i} \]
+                  \end{itemize}
+      \end{description}
+}
+
+\mybox{Spulen / \textit{Inductors}}{
+      \begin{description}
+            \item [Ringspule / \textit{Toroidal coil}]
+                  \begin{align*}
+                        L              & =\frac{\mu\,N^2\,A}{2\,\pi\,R} \\
+                        \norm{\vec{H}} & =\frac{N\,I}{2\,\pi\,R}
+                  \end{align*}
+            \item [Zylinderspule / \textit{Solenoid}]
+                  \begin{align*}
+                        L              & =\frac{\mu\,N^2\,A}{l} \\
+                        \norm{\vec{H}} & =\frac{N\,I}{l}
+                  \end{align*}
+      \end{description}
+}
+
+\mybox{\textbf{Transformatoren / \textit{Transformers}}}{
+      \begin{description}
+            \item [Leistungserhaltungssatz / \textit{Conservation of power}]
+                  \[U\sub{1}\,I\sub{1}=U\sub{2}\,I\sub{2}\]
+            \item [Transformator / \textit{Transformer}]
+                  \begin{align*}
+                        \frac{U\sub{1}}{U\sub{2}} & =\frac{N\sub{1}}{N\sub{2}}                \\
+                        \frac{I\sub{1}}{I\sub{2}} & =\frac{N\sub{2}}{N\sub{1}}                \\
+                        \frac{Z\sub{1}}{Z\sub{2}} & =\left(\frac{N\sub{1}}{N\sub{2}}\right)^2
+                  \end{align*}
+      \end{description}
+}
+
+\section{Halbleiterbauelemente / \textit{Semiconductor devices}}
+\mybox{\textbf{Halbleiterphysik / \textit{Physics of semiconductors}}}{
+      \begin{description}
+            \item [Klassifizierung / \textit{Classification}]\leavevmode\\
+                  \begin{itemize}
+                        \item Leiter / \textit{Conductor}: \(E\sub{g}=0\)
+                        \item Halbleiter / \textit{Semiconductors}: \(\qty{0.1}{\electronvolt} \leq E\sub{g} \leq \qty{3.0}{\electronvolt}\)
+                        \item Isolatoren / \textit{Insulators}: \(E\sub{g}>\qty{4.0}{\electronvolt}\)
+                  \end{itemize}
+            \item [Leitfähigkeit / \textit{Conductivity}]
+                  \[\kappa=\frac{1}{\varrho}=e\left(n\sub{e} \mu\sub{e}+n\sub{p}\,\mu\sub{p}\right)\quad [\kappa]=\unit{\siemens\per\meter}\]
+            \item [Elektronendichte / \textit{Electron density}]
+                  \[n=\frac{N}{V}\quad [n]=\unit{\per\meter\cubed}\]
+            \item [Ladungsträgerbeweglichkeit / \textit{Charge carrier mobility}]
+                  \[\mu=\frac{\vec{v}}{\vec{E}}\quad [\mu]=\unit{\meter\squared\per\volt\second}\]
+      \end{description}
+}
+
+\mybox{\textbf{Halbleiterdioden / \textit{Semiconductor diodes}}}{
+      \begin{description}
+            \item [Diodengleichung / \textit{Diode equation}]
+                  \[I=I\sub{S}\left(\ee^{\frac{U}{U\sub{T}}}-1\right)\approx I\sub{S} e^{\frac{U}{U\sub{T}}}\]
+            \item [Sättigungsstrom / \textit{Saturation current}]
+                  \[I\sub{S}\approx \qty{1e-12}{\ampere}\qq{(Si)}\]
+            \item [Thermische Spannung bei \qty{25}{\celsius}/ \textit{Thermal voltage at \qty{25}{\celsius}}]
+                  \[U\sub{T}=\frac{k\,T}{e}\approx \qty{25.7}{\milli\volt}\]
+            \item [Kleinsignalwiderstand am Arbeitspunkt /]\leavevmode\\
+                  \begin{flushright}\textbf{\textit{Small-signal resistance at operating point}}\\[1em]\end{flushright}
+                  \[r=\frac{U\sub{T}}{I}\quad [r]=\unit{\ohm}\]
+      \end{description}
+}
+
+\mybox{\textbf{Transistoren / \textit{Transistors}}}{
+      \begin{description}
+            \item [Transistor als Schalter / \textit{Transistor as switch}]\leavevmode\\
+                  \begin{itemize}
+                        \item Sättigung / \textit{Saturation}
+                              \begin{align*}
+                                    U\sub{CE} & \approx \qty{0.2}{\volt}\quad U\sub{BE}\approx \qty{0.7}{\volt} \\
+                                    I\sub{C}  & <\beta\,I\sub{B}
+                              \end{align*}
+                        \item Sperrbereich / \textit{Cut-off region}
+                              \[U\sub{CE}\approx U\sub{CC}\quad U\sub{BE}\approx 0\]
+                        \item Übersteuern / \textit{Overdrive}
+                              \begin{align*}
+                                    1.\quad & I\sub{B}=\frac{I\sub{C}}{\beta} \\
+                                    2.\quad & I^*\sub{B}=2\,I\sub{B}
+                              \end{align*}
+                  \end{itemize}
+            \item [Transistor als Verstärker / \textit{Transistor as amplifier}]\leavevmode\\
+                  \begin{description}
+                        \item DC Analyse / \textit{DC analysis}\leavevmode\\
+                              \begin{itemize}
+                                    \item Kondensatoren gegen Öffnung tauschen / \textit{Replace capacitors with open circuit}\\
+                                    \item  Transistor im Normalbetrieb / \textit{Transistor in active mode}
+                                          \begin{align*}
+                                                U\sub{CE} & >\qty{0.2}{\volt}\quad U\sub{BE}\approx \qty{0.7}{\volt} \\
+                                                I\sub{C}  & =\beta\,I\sub{B}
+                                          \end{align*}
+                              \end{itemize}
+                        \item AC Analyse / \textit{AC analysis}\leavevmode\\
+                              \begin{itemize}
+                                    \item  Kondensatoren gegen Kurzschluss tauschen / \textit{Replace capacitors with short circuit}\\
+                                    \item DC Quellen gegen Äquivalenzwiderstand tauschen / \textit{Replace DC sources with equivalent resistance}\\
+                                    \item Ggf. Ersatzspannungsquelle $U\sub{Th}$ und Ersatzwiderstand $R\sub{Th}$ bilden / \textit{If necessary, calculate Thévenin voltage source $U\sub{Th}$ and resistance $R\sub{Th}$}
+                                          \begin{align*}
+                                                i\sub{C}  & =\beta\sub{AC}\,i\sub{B},\qq{mit/\textit{with}}\beta\sub{AC}\approx \beta\sub{DC} \\
+                                                r\sub{BE} & =\frac{U\sub{T}}{I\sub{B}}                                                        \\
+                                                U\sub{T}  & =\frac{k\,T}{e}\approx \qty{25.7}{\milli\volt}
+                                          \end{align*}
+                              \end{itemize}
+                        \item Spannungsverstärkung ideale Signalquelle / \textit{Voltage gain of ideal signal source}
+                              \[A\sub{U}=\frac{U\sub{o}}{U\sub{i}}=\beta\sub{AC}\,\frac{R\sub{C}\parallel r\sub{CE}\parallel R\sub{L}}{r\sub{BE}}\]
+                        \item Spannungsverstärkung reale Signalquelle / \textit{Voltage gain of real signal source}
+                              \[A\sub{U}=\frac{U\sub{o}}{U\sub{i}}=\beta\sub{AC}\,\frac{R\sub{Th}\,\left(R\sub{C}\parallel r\sub{CE}\parallel R\sub{L}\right)}{R\sub{Th}+r\sub{BE}}\]
+                  \end{description}
+            \item [Frequenzgang / \textit{Frequency response}]\leavevmode\\
+                  \begin{description}
+                        \item Untere Grenzfrequenz / \textit{Lower frequency limit}\leavevmode\\
+                              \begin{itemize}
+                                    \item Eingang mit idealer Signalquelle / \textit{Input with ideal signal source}
+                                          \[f\sub{li}=\frac{1}{2\,\pi\,C\sub{i}\,r\sub{i}}\]
+                                    \item Ausgang mit Kollektor, Last und Kleinsignalwiderstand / \textit{Output with collector, load and small-signal resistance}
+                                          \[f\sub{lo}=\frac{1}{2\,\pi\,C\sub{o}\,R\sub{L}\sqrt{2-\left(1+\frac{r\sub{o}}{R\sub{L}}\right)^2}}\]
+                              \end{itemize}
+                        \item Obere Grenzfrequenz $f_\beta$ mit Transitfrequenz  $f\sub{T}$ / \textit{Upper frequency limit $f_\beta$ with transit frequency $f\sub{T}$}
+                              \[f_\beta=\frac{f\sub{T}}{\beta}\]
+                  \end{description}
+      \end{description}
+}
+
+
+
+% \pagebreak
+
+\end{multicols}
+% End the document
+\end{document}
